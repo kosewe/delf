@@ -36,8 +36,13 @@ class delfMain
 	public function createUser($request,$inst_id){
 		$dbh = $this->dbConnect();
 
-		$passwordHashed = password_hash($request->pass2, PASSWORD_BCRYPT);
-
+		$password = $this->validatePassword($request->pass2);
+		if($password == $request->pass2){
+			$passwordHashed = password_hash($password, PASSWORD_BCRYPT);
+		}else{
+			echo $password;
+			exit();
+		}
 		$stmt = $dbh->prepare("INSERT INTO users VALUES (null, :email, :pass2, :inst_id)");
 		$stmt->bindParam(':email', $request->email, PDO::PARAM_STR);
 		$stmt->bindParam(':pass2', $passwordHashed, PDO::PARAM_STR);
@@ -48,8 +53,12 @@ class delfMain
 		return $id;
 	}
 
-	function validatePassword(){
-		
+	function validatePassword($password){
+		if(strlen($password) < 7){
+			return 'Password is too short';
+		}else{
+			return $password;
+		}
 	}
 
 }
