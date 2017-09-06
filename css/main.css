@@ -1,0 +1,17 @@
+.nav-container{
+	 position:absolute;
+	 margin-top:0px;
+	 height:100px;
+	 width:1599px;
+}
+
+.nav-pills{
+	 position:absolute;
+	 margin-left:1300px;
+	 margin-top:25px;
+	 length:700px;
+}
+.reg{
+	position: absolute;
+	margin-top: 50px;
+}
