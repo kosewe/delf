@@ -1,1 +1,1 @@
-# delf is a simple php/html/js word game with js disk support
+# This is a simple word game based on html css ,js and php
